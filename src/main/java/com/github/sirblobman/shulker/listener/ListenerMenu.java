@@ -24,7 +24,7 @@ import com.github.sirblobman.api.language.LanguageManager;
 import com.github.sirblobman.api.plugin.listener.PluginListener;
 import com.github.sirblobman.api.utility.ItemUtility;
 import com.github.sirblobman.shulker.ShulkerPlugin;
-import com.github.sirblobman.shulker.manager.ShopAccessManager;
+//import com.github.sirblobman.shulker.manager.ShopAccessManager;
 import com.github.sirblobman.shulker.menu.ShulkerBoxMenu;
 import com.github.sirblobman.api.shaded.xseries.XMaterial;
 
@@ -80,16 +80,17 @@ public final class ListenerMenu extends PluginListener<ShulkerPlugin> {
         e.setUseItemInHand(Result.DENY);
         e.setUseInteractedBlock(Result.DENY);
 
+        // Delete Shop
         ShulkerPlugin plugin = getPlugin();
-        if (plugin.isShopEnabled()) {
-            XMaterial material = XMaterial.matchXMaterial(item);
-            ShopAccessManager shopAccessManager = plugin.getShopAccessManager();
-            if (!shopAccessManager.hasAccess(player, material)) {
-                LanguageManager languageManager = plugin.getLanguageManager();
-                languageManager.sendMessage(player, "error.missing-type-access");
-                return;
-            }
-        }
+//        if (plugin.isShopEnabled()) {
+//            XMaterial material = XMaterial.matchXMaterial(item);
+//            ShopAccessManager shopAccessManager = plugin.getShopAccessManager();
+//            if (!shopAccessManager.hasAccess(player, material)) {
+//                LanguageManager languageManager = plugin.getLanguageManager();
+//                languageManager.sendMessage(player, "error.missing-type-access");
+//                return;
+//            }
+//        }
 
         // Changed to right-click air to open the shulker box
         if (action == Action.RIGHT_CLICK_AIR) {

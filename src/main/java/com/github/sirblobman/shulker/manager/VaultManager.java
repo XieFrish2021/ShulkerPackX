@@ -14,6 +14,7 @@ import com.github.sirblobman.shulker.ShulkerPlugin;
 
 import net.milkbowl.vault.economy.Economy;
 
+@Deprecated
 public final class VaultManager {
     private final ShulkerPlugin plugin;
     private Economy economy;

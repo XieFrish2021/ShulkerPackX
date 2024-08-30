@@ -13,6 +13,7 @@ import com.github.sirblobman.api.utility.Validate;
 import com.github.sirblobman.shulker.ShulkerPlugin;
 import com.github.sirblobman.api.shaded.xseries.XMaterial;
 
+@Deprecated
 public final class ShopAccessManager {
     private final ShulkerPlugin plugin;
 

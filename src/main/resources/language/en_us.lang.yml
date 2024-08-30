@@ -17,7 +17,6 @@ decimal-format: "0.00"
 
 error:
   shop-disabled: "<red>The shop feature is not enabled.</red>"
-  missing-type-access: "<red>You do not have access to that shulker box type.</red>"
   already-owned: "<red>You already have access to that type of shulker box.</red>"
   not-enough-money: "<red>You do not have enough money.</red>"
   economy-error:

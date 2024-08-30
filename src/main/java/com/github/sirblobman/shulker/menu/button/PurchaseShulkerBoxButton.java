@@ -29,6 +29,7 @@ import com.github.sirblobman.api.shaded.xseries.XMaterial;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 
+@Deprecated
 public final class PurchaseShulkerBoxButton extends QuickButton {
     private final ShulkerPlugin plugin;
     private final XMaterial material;
@@ -46,48 +47,48 @@ public final class PurchaseShulkerBoxButton extends QuickButton {
         return this.material;
     }
 
-    @Override
-    public void onLeftClick(@NotNull Player player, boolean shift) {
-        ShulkerPlugin plugin = getPlugin();
-        LanguageManager languageManager = plugin.getLanguageManager();
-        ShopAccessManager shopAccessManager = plugin.getShopAccessManager();
-
-        XMaterial material = getMaterial();
-        if (shopAccessManager.hasAccess(player, material)) {
-            return;
-        }
-
-        String materialName = material.name();
-        YamlConfiguration configuration = plugin.getConfig();
-        double price = configuration.getDouble("shop-menu.price." + materialName, 5.0D);
-        if (price <= 0.0D) {
-            shopAccessManager.addAccess(player, material);
-            sendPurchaseSuccessfulMessage(player, material);
-            closeMenu(player);
-            return;
-        }
-
-        VaultManager hookVault = plugin.getHookVault();
-        Economy economy = hookVault.getEconomy();
-        double balance = economy.getBalance(player);
-        if (balance < price) {
-            languageManager.sendMessage(player, "error.not-enough-money");
-            closeMenu(player);
-            return;
-        }
-
-        EconomyResponse economyResponse = economy.withdrawPlayer(player, price);
-        if (!economyResponse.transactionSuccess()) {
-            Replacer replacer = new StringReplacer("{error}", economyResponse.errorMessage);
-            languageManager.sendMessage(player, "error.economy-error", replacer);
-            closeMenu(player);
-            return;
-        }
-
-        shopAccessManager.addAccess(player, material);
-        sendPurchaseSuccessfulMessage(player, material);
-        closeMenu(player);
-    }
+//    @Override
+//    public void onLeftClick(@NotNull Player player, boolean shift) {
+//        ShulkerPlugin plugin = getPlugin();
+//        LanguageManager languageManager = plugin.getLanguageManager();
+//        ShopAccessManager shopAccessManager = plugin.getShopAccessManager();
+//
+//        XMaterial material = getMaterial();
+//        if (shopAccessManager.hasAccess(player, material)) {
+//            return;
+//        }
+//
+//        String materialName = material.name();
+//        YamlConfiguration configuration = plugin.getConfig();
+//        double price = configuration.getDouble("shop-menu.price." + materialName, 5.0D);
+//        if (price <= 0.0D) {
+//            shopAccessManager.addAccess(player, material);
+//            sendPurchaseSuccessfulMessage(player, material);
+//            closeMenu(player);
+//            return;
+//        }
+//
+//        VaultManager hookVault = plugin.getHookVault();
+//        Economy economy = hookVault.getEconomy();
+//        double balance = economy.getBalance(player);
+//        if (balance < price) {
+//            languageManager.sendMessage(player, "error.not-enough-money");
+//            closeMenu(player);
+//            return;
+//        }
+//
+//        EconomyResponse economyResponse = economy.withdrawPlayer(player, price);
+//        if (!economyResponse.transactionSuccess()) {
+//            Replacer replacer = new StringReplacer("{error}", economyResponse.errorMessage);
+//            languageManager.sendMessage(player, "error.economy-error", replacer);
+//            closeMenu(player);
+//            return;
+//        }
+//
+//        shopAccessManager.addAccess(player, material);
+//        sendPurchaseSuccessfulMessage(player, material);
+//        closeMenu(player);
+//    }
 
     private void closeMenu(@NotNull Player player) {
         ShulkerPlugin plugin = getPlugin();

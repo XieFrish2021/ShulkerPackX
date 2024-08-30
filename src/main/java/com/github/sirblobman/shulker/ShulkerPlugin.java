@@ -15,20 +15,20 @@ import com.github.sirblobman.api.language.Language;
 import com.github.sirblobman.api.language.LanguageManager;
 import com.github.sirblobman.api.plugin.ConfigurablePlugin;
 import com.github.sirblobman.api.update.SpigotUpdateManager;
-import com.github.sirblobman.shulker.command.CommandShulkerPackShop;
+//import com.github.sirblobman.shulker.command.CommandShulkerPackShop;
 import com.github.sirblobman.shulker.listener.ListenerMenu;
-import com.github.sirblobman.shulker.manager.ShopAccessManager;
-import com.github.sirblobman.shulker.manager.VaultManager;
+//import com.github.sirblobman.shulker.manager.ShopAccessManager;
+//import com.github.sirblobman.shulker.manager.VaultManager;
 import com.github.sirblobman.api.shaded.bstats.bukkit.Metrics;
 import com.github.sirblobman.api.shaded.bstats.charts.SimplePie;
 
 public final class ShulkerPlugin extends ConfigurablePlugin {
-    private final ShopAccessManager shopAccessManager;
-    private VaultManager hookVault;
+//    private final ShopAccessManager shopAccessManager;
+//    private VaultManager hookVault;
 
     public ShulkerPlugin() {
-        this.shopAccessManager = new ShopAccessManager(this);
-        this.hookVault = null;
+//        this.shopAccessManager = new ShopAccessManager(this);
+//        this.hookVault = null;
     }
 
     @Override
@@ -47,7 +47,7 @@ public final class ShulkerPlugin extends ConfigurablePlugin {
         LanguageManager languageManager = getLanguageManager();
         languageManager.onPluginEnable();
 
-        registerCommands();
+//        registerCommands();
         registerListeners();
         registerUpdateChecker();
         register_bStats();
@@ -66,53 +66,53 @@ public final class ShulkerPlugin extends ConfigurablePlugin {
         LanguageManager languageManager = getLanguageManager();
         languageManager.reloadLanguages();
 
-        if (isShopEnabled() && !setupVault()) {
-            Logger logger = getLogger();
-            logger.warning("The shop is enabled in the configuration, but the Vault economy setup has failed.");
-            logger.warning("The shop has been automatically disabled.");
-            disableShop();
-        }
+//        if (isShopEnabled() && !setupVault()) {
+//            Logger logger = getLogger();
+//            logger.warning("The shop is enabled in the configuration, but the Vault economy setup has failed.");
+//            logger.warning("The shop has been automatically disabled.");
+//            disableShop();
+//        }
     }
 
-    public @NotNull ShopAccessManager getShopAccessManager() {
-        return this.shopAccessManager;
-    }
+//    public @NotNull ShopAccessManager getShopAccessManager() {
+//        return this.shopAccessManager;
+//    }
 
-    public @NotNull VaultManager getHookVault() {
-        if (this.hookVault == null) {
-            throw new IllegalStateException("Vault features are not currently enabled!");
-        }
+//    public @NotNull VaultManager getHookVault() {
+//        if (this.hookVault == null) {
+//            throw new IllegalStateException("Vault features are not currently enabled!");
+//        }
+//
+//        return this.hookVault;
+//    }
 
-        return this.hookVault;
-    }
+//    public boolean isShopEnabled() {
+//        YamlConfiguration configuration = getConfig();
+//        return configuration.getBoolean("shop-menu.enabled", true);
+//    }
+//
+//    private void disableShop() {
+//        YamlConfiguration configuration = getConfig();
+//        configuration.set("shop-menu.enabled", false);
+//    }
 
-    public boolean isShopEnabled() {
-        YamlConfiguration configuration = getConfig();
-        return configuration.getBoolean("shop-menu.enabled", true);
-    }
+//    private boolean setupVault() {
+//        this.hookVault = null;
+//
+//        Logger logger = getLogger();
+//        PluginManager pluginManager = Bukkit.getPluginManager();
+//        if (!pluginManager.isPluginEnabled("Vault")) {
+//            logger.warning("Vault is not installed.");
+//            return false;
+//        }
+//
+//        this.hookVault = new VaultManager(this);
+//        return this.hookVault.setupEconomy();
+//    }
 
-    private void disableShop() {
-        YamlConfiguration configuration = getConfig();
-        configuration.set("shop-menu.enabled", false);
-    }
-
-    private boolean setupVault() {
-        this.hookVault = null;
-
-        Logger logger = getLogger();
-        PluginManager pluginManager = Bukkit.getPluginManager();
-        if (!pluginManager.isPluginEnabled("Vault")) {
-            logger.warning("Vault is not installed.");
-            return false;
-        }
-
-        this.hookVault = new VaultManager(this);
-        return this.hookVault.setupEconomy();
-    }
-
-    private void registerCommands() {
-        new CommandShulkerPackShop(this).register();
-    }
+//    private void registerCommands() {
+//        new CommandShulkerPackShop(this).register();
+//    }
 
     private void registerListeners() {
         new ListenerMenu(this).register();

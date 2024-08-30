@@ -11,6 +11,7 @@ import com.github.sirblobman.api.command.PlayerCommand;
 import com.github.sirblobman.shulker.ShulkerPlugin;
 import com.github.sirblobman.shulker.menu.ShulkerShopMenu;
 
+@Deprecated
 public final class CommandShulkerPackShop extends PlayerCommand {
     private final ShulkerPlugin plugin;
 
@@ -27,10 +28,10 @@ public final class CommandShulkerPackShop extends PlayerCommand {
     @Override
     protected boolean execute(@NotNull Player player, String @NotNull [] args) {
         ShulkerPlugin plugin = getShulkerPlugin();
-        if (!plugin.isShopEnabled()) {
-            sendMessage(player, "error.shop-disabled");
-            return true;
-        }
+//        if (!plugin.isShopEnabled()) {
+//            sendMessage(player, "error.shop-disabled");
+//            return true;
+//        }
 
         new ShulkerShopMenu(plugin, player).open();
         return true;
