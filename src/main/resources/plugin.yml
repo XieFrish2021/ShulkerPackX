@@ -29,7 +29,7 @@ commands:
       - "spx-shop"
       - "spxshop"
 
-permissions:
-  shulkerpackx.shift.place:
-    description: "Allow a player to place a shulker box when they are sneaking."
-    default: op
+#permissions:
+#  shulkerpackx.shift.place:
+#    description: "Allow a player to place a shulker box when they are sneaking."
+#    default: op

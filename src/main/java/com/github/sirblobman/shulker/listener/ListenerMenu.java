@@ -51,7 +51,12 @@ public final class ListenerMenu extends PluginListener<ShulkerPlugin> {
         }
 
         Player player = e.getPlayer();
-        if (player.isSneaking() && player.hasPermission("shulkerpackx.shift.place")) {
+        // Changed to right-click air to open the shulker box
+//        if (player.hasPermission("shulkerpackx.shift.place")) {
+//            return;
+//        }
+
+        if (action != Action.RIGHT_CLICK_AIR) {
             return;
         }
 
@@ -86,8 +91,11 @@ public final class ListenerMenu extends PluginListener<ShulkerPlugin> {
             }
         }
 
-        ShulkerBoxMenu shulkerBoxMenu = new ShulkerBoxMenu(plugin, player, item);
-        shulkerBoxMenu.open();
+        // Changed to right-click air to open the shulker box
+        if (action == Action.RIGHT_CLICK_AIR) {
+            ShulkerBoxMenu shulkerBoxMenu = new ShulkerBoxMenu(plugin, player, item);
+            shulkerBoxMenu.open();
+        }
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
